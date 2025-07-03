@@ -1,7 +1,19 @@
 from transformers import pipeline
 
-classificador = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-gerador = pipeline("text-generation", model="EleutherAI/gpt-neo-125M")
+from transformers import pipeline
+
+classificador = pipeline(
+    "zero-shot-classification",
+    model="facebook/bart-large-mnli",
+    cache_dir="/tmp"
+)
+
+gerador = pipeline(
+    "text-generation",
+    model="EleutherAI/gpt-neo-125M",
+    cache_dir="/tmp"
+)
+
 
 def processar_email(texto):
     resultado = classificador(
